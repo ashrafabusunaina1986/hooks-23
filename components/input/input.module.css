@@ -1,0 +1,23 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+.input label{
+    text-align: left;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+.input input{
+    border: none;
+    box-shadow: 0 0 3px 1px #eee;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background:none;
+}
