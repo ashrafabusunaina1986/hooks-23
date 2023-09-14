@@ -4,3 +4,17 @@
     width: 40%;
     box-shadow: 0 3px 8px #999;
 }
+.error{
+    background-color: #fee;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 0 4px 2px #f00;
+    padding: 5px 10px ;
+    border-radius: 1px;
+    margin: auto;
+    margin-top: 2rem;
+    width: max-content;
+    margin-bottom: -10px;
+
+}

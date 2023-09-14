@@ -1,20 +1,34 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import classes from './page.module.css'
-import {AiFillDelete,AiFillEdit} from 'react-icons/ai'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 
 const page = (props) => {
   const [info, setInfo] = useState([])
 
-  useEffect(() => {
-    getInfo()
+  useEffect(async () => {
+    setInfo(await getInfo())
+    return
   }, [])
   const getInfo = async () => {
     const res = await fetch('/api/info')
-    const data = await res.json()
-    setInfo(data)
-    console.log(data)
+
+    if (!res.ok) {
+      throw new Error('Wrong went something')
+    }
+
+    return await res.json()
   }
+
+  const deleteHandler = async (id) => {
+    const res = await fetch(`/api/delete`, {
+      method: 'DELETE',
+      body: JSON.stringify({ id: id })
+    })
+    const d=await res.json()
+    setInfo(await getInfo())
+  }
+
   return (
     info.info && info.info.length > 0 && <div className={classes.main}>
       {info.info.map(ti => {
@@ -25,8 +39,7 @@ const page = (props) => {
             <span>Age is {ti.Age} year old</span>
           </div>
           <div className={classes.icon}>
-            <AiFillDelete/>
-            <AiFillEdit/>
+            <AiFillDelete onClick={() => deleteHandler(ti.id)} />
           </div>
         </div>
       })}
