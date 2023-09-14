@@ -26,6 +26,7 @@ const page = (props) => {
       body: JSON.stringify({ id: id })
     })
     const d = await res.json()
+    //console.log(d)
     if (d) {
       setInfo(await getInfo())
      // window.location.reload()
