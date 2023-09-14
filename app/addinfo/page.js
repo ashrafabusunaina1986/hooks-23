@@ -25,8 +25,11 @@ const page = (props) => {
       method: 'DELETE',
       body: JSON.stringify({ id: id })
     })
-    const d=await res.json()
-    setInfo(await getInfo())
+    const d = await res.json()
+    if (d) {
+      setInfo(await getInfo())
+     // window.location.reload()
+    }
   }
 
   return (
