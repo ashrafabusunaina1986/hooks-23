@@ -1,11 +1,14 @@
+'use client'
 import Form from '@/components/form/Form'
-import React from 'react'
+import React, { useState } from 'react'
+import AddInfo from './page'
 
 const Layout = (props) => {
+  const [error,setError]=useState({})
   return (
     <div>
-        <Form/>
-        {props.children}
+        <Form setError={setError}/>
+        <AddInfo error={error}/>
     </div>
   )
 }

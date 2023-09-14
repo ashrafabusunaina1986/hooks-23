@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 import classes from './page.module.css'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 
-const page = (props) => {
+const AddInfo = (props) => {
   const [info, setInfo] = useState([])
-
+  
   useEffect(async () => {
     setInfo(await getInfo())
-    return
+    return()=>{
+      
+    }
   }, [])
   const getInfo = async () => {
     const res = await fetch('/api/info')
@@ -18,6 +20,7 @@ const page = (props) => {
     }
 
     return await res.json()
+    
   }
 
   const deleteHandler = async (id) => {
@@ -26,7 +29,7 @@ const page = (props) => {
       body: JSON.stringify({ id: id })
     })
     const d = await res.json()
-    //console.log(d)
+    console.log(d)
     if (d) {
       setInfo(await getInfo())
      // window.location.reload()
@@ -52,4 +55,4 @@ const page = (props) => {
   )
 }
 
-export default page
+export default AddInfo

@@ -5,6 +5,7 @@ import classes from './form.module.css'
 import Button from '../Button/Button'
 
 function Form(props) {
+
     const [input, setInput] = useState({
         firstname: '',
         lastname: '',
@@ -25,7 +26,6 @@ function Form(props) {
             id==='lastname'?error.lastname = 'enter last name >3 letters':''
         }
         setError(error)
-
         setInput({
             ...input, [id]: value
         })
@@ -44,6 +44,8 @@ function Form(props) {
                 error.lastname = 'enter last name >3 letters'
             }
             setError(error)
+            props.setError(input)
+            
         } else {
             fetch('/api/info', {
                 body: JSON.stringify(input),
